@@ -93,9 +93,9 @@
     console.log('======= ji: ', ji);
 
     hu = window.location.search.substring(1);
+    hu = hu.replaceAll('&amp;', '&');
+    gy = hu.split("&");
     console.log('======= hu: ', hu);
-
-    gy = hu.split("&amp;");
     console.log('======= gy: ', gy);
 
 
@@ -125,15 +125,13 @@
       setParams();
       setTimeout(() => {
         try {
-          console.log('======= window.location.replace(url) ===');
+          console.log('============= try url: ', url);
           window.location.replace(url);
         } catch (error) {
-    console.log('======= window.location.replace(url) error: ', error);
+          console.log('Error trying window.location.replace(url): ', error);
           setTimeout(() => {
-    console.log('======= redir() again ===== ');
-
-            redir();
-          }, 4000);
+              redir();
+            }, 4000);
         }
       }, 2000);
     }, 1000);
