@@ -129,9 +129,6 @@
           window.location.replace(url);
         } catch (error) {
           console.log('Error trying window.location.replace(url): ', error);
-          setTimeout(() => {
-              redir();
-            }, 4000);
         }
       }, 2000);
     }, 1000);
