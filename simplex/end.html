@@ -75,6 +75,7 @@
 
 <body>
   <img class="bitpay-logo" src="./bitpay-logo.svg" alt="Bitpay">
+  <h3 id="test"></h3>
   <h3 id="success"></h3>
   <div class="content">
     <p>Redirecting to the App...</p>
@@ -108,15 +109,23 @@
   }
 
   function setParams() {
-    var success = querySt("success");
-    document.getElementById('success').innerHTML = success == 'true' ? 'Success!' : 'Operation failed';
+    console.log('========= window.location.search: ', window.location.search);
+    document.getElementById('test').innerHTML = window.location.search;
+    var isSell = querySt("isSell");
 
-    var paymentId = querySt("paymentId");
-    var quoteId = querySt("quoteId");
-    var userId = querySt("userId");
-    var returnApp = querySt("returnApp");
-
-    url = returnApp + '://simplex?success=' + success + '&paymentId=' + paymentId + '&quoteId=' + quoteId + '&userId=' + userId;
+    if (isSell) {
+      url = returnApp + '://simplex' + window.location.search;
+    } else {
+      var success = querySt("success");
+      document.getElementById('success').innerHTML = success == 'true' ? 'Success!' : 'Operation failed';
+  
+      var paymentId = querySt("paymentId");
+      var quoteId = querySt("quoteId");
+      var userId = querySt("userId");
+      var returnApp = querySt("returnApp");
+  
+      url = returnApp + '://simplex?success=' + success + '&paymentId=' + paymentId + '&quoteId=' + quoteId + '&userId=' + userId;
+    }
   }
 
   function redir() {
