@@ -111,9 +111,11 @@
   function setParams() {
     console.log('========= window.location.search: ', window.location.search);
     document.getElementById('test').innerHTML = window.location.search;
-    var isSell = querySt("isSell");
+    var returnApp = querySt("returnApp") ?? 'bitpay';
+    var flow = querySt("flow");
 
-    if (isSell) {
+
+    if (flow === 'sell') {
       url = returnApp + '://simplex' + window.location.search;
     } else {
       var success = querySt("success");
@@ -122,7 +124,6 @@
       var paymentId = querySt("paymentId");
       var quoteId = querySt("quoteId");
       var userId = querySt("userId");
-      var returnApp = querySt("returnApp");
   
       url = returnApp + '://simplex?success=' + success + '&paymentId=' + paymentId + '&quoteId=' + quoteId + '&userId=' + userId;
     }
